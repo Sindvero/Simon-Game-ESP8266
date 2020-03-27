@@ -181,8 +181,8 @@ void loop() {
       // stateRedButton = 0;
       // stateWhiteButton = 0;
 
-      delay(100);
       while (buttonPressed == -1 && ((millis() - timeLeft) < timeGiven )){
+        delay(100);
 
         blueState = stateBlueButton;
         greenState = stateGreenButton;
