@@ -3,8 +3,8 @@
 #include <SPIFFSEditor.h>
 #include <FS.h>
 
-const char *ssid = "ION-303";
-const char *password = "55638792";
+const char *ssid = "ssidNetwork";
+const char *password = "password";
 
 int randNumbers[100];
 int count = 1;
@@ -100,28 +100,24 @@ void setup() {
   server.on("/blue", HTTP_GET, [](AsyncWebServerRequest *request)
   {
     stateBlueButton = 1;
-    Serial.print("b");
     request->send(204);
   });
 
   server.on("/red", HTTP_GET, [](AsyncWebServerRequest *request)
   {
     stateRedButton = 1;
-    Serial.print("r");
     request->send(204);
   });
 
   server.on("/green", HTTP_GET, [](AsyncWebServerRequest *request)
   {
     stateGreenButton = 1;
-    Serial.print("g");
     request->send(204);
   });
 
   server.on("/white", HTTP_GET, [](AsyncWebServerRequest *request)
   {
     stateWhiteButton = 1;
-    Serial.print("w");
     request->send(204);
   });
 
@@ -176,10 +172,6 @@ void loop() {
     for (int t = 0; t < count; t++){
       buttonPressed = -1;
       timeLeft = millis();
-      // stateBlueButton = 0;
-      // stateGreenButton = 0;
-      // stateRedButton = 0;
-      // stateWhiteButton = 0;
 
       while (buttonPressed == -1 && ((millis() - timeLeft) < timeGiven )){
         delay(100);
@@ -188,7 +180,6 @@ void loop() {
         greenState = stateGreenButton;
         whiteState = stateWhiteButton;
         redState = stateRedButton;
-        // Serial.println("qqqqq");
 
         if (blueState){
           buttonPressed = 1;
@@ -204,9 +195,6 @@ void loop() {
           stateWhiteButton = 0;
         }
       }
-
-      sprintf(buffer, "button: %u", buttonPressed);
-      Serial.println(buffer);
       ledHigh(buttonPressed); 
       delay(timeHigh);  
 
@@ -233,11 +221,8 @@ void loop() {
 void ledsLow(void){
 
     digitalWrite(blueLed, LOW);
-
     digitalWrite(greenLed, LOW);
-
     digitalWrite(redLed, LOW);
-
     digitalWrite(whiteLed, LOW);
 
 }
@@ -245,18 +230,14 @@ void ledsLow(void){
 void ledsHigh(void){
 
   digitalWrite(blueLed, HIGH);
-
   digitalWrite(greenLed, HIGH);
-
   digitalWrite(redLed, HIGH);
-
   digitalWrite(whiteLed, HIGH);
 
 }
 
 void ledHigh(int number){
-  switch (number)
-  {
+  switch (number){
   case 1:
      digitalWrite(blueLed, HIGH);
     break;
