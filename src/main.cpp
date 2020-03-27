@@ -28,6 +28,11 @@ int stateBlueButton = 0;
 int stateRedButton = 0;
 int stateWhiteButton = 0;
 int stateGreenButton = 0;
+int blueState = 0;
+int redState = 0;
+int whiteState = 0;
+int greenState = 0;
+char buffer[23];
 AsyncWebServer server(80);
 
 void setup() {
@@ -95,24 +100,28 @@ void setup() {
   server.on("/blue", HTTP_GET, [](AsyncWebServerRequest *request)
   {
     stateBlueButton = 1;
+    Serial.print("b");
     request->send(204);
   });
 
   server.on("/red", HTTP_GET, [](AsyncWebServerRequest *request)
   {
     stateRedButton = 1;
+    Serial.print("r");
     request->send(204);
   });
 
   server.on("/green", HTTP_GET, [](AsyncWebServerRequest *request)
   {
     stateGreenButton = 1;
+    Serial.print("g");
     request->send(204);
   });
 
   server.on("/white", HTTP_GET, [](AsyncWebServerRequest *request)
   {
     stateWhiteButton = 1;
+    Serial.print("w");
     request->send(204);
   });
 
@@ -141,7 +150,6 @@ void loop() {
       count = 1;
       correct = 1;
       stateRestartButton = 0;
-      buttonPressed = -1;
     }
 
 
@@ -159,6 +167,8 @@ void loop() {
       delay(timeHigh);
       ledsLow();
       delay(timeHigh);
+      
+      
     }
 
     ledsLow();
@@ -166,30 +176,44 @@ void loop() {
     for (int t = 0; t < count; t++){
       buttonPressed = -1;
       timeLeft = millis();
+      // stateBlueButton = 0;
+      // stateGreenButton = 0;
+      // stateRedButton = 0;
+      // stateWhiteButton = 0;
 
+      delay(100);
       while (buttonPressed == -1 && ((millis() - timeLeft) < timeGiven )){
 
-        if (stateBlueButton){
+        blueState = stateBlueButton;
+        greenState = stateGreenButton;
+        whiteState = stateWhiteButton;
+        redState = stateRedButton;
+        // Serial.println("qqqqq");
+
+        if (blueState){
           buttonPressed = 1;
           stateBlueButton = 0;
-        }else if (stateGreenButton){
+        }else if (greenState){
           buttonPressed = 2;
           stateGreenButton = 0;
-        }else if (stateRedButton){
+        }else if (redState){
           buttonPressed = 3;
           stateRedButton = 0;
-        }else if (stateWhiteButton){
+        }else if (whiteState){
           buttonPressed = 4;
           stateWhiteButton = 0;
         }
       }
 
-      ledHigh(buttonPressed);
-      delay(timeHigh);
+      sprintf(buffer, "button: %u", buttonPressed);
+      Serial.println(buffer);
+      ledHigh(buttonPressed); 
+      delay(timeHigh);  
 
       if (buttonPressed != randNumbers[t]){
         ledsHigh();
         correct = 0;
+        buttonPressed = -1;
         break;
       }
 
