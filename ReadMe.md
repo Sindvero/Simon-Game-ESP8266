@@ -14,6 +14,6 @@ The electronic schema is quite simple since you don't need physical buttons:
 
 ![electronicSchema](img/adafruit_project_webapp.png "Electonic Schema")
 
-You just to pull my repository, upload the file system (with the css, JS and HTML files), build main.cpp and upload the binary file.
+To install the game, you just need to pull my repository, upload the file system (with the css, JS and HTML files), build main.cpp and upload the binary file.
 
 ## Interface
