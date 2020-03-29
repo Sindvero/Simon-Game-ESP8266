@@ -17,3 +17,5 @@ The electronic schema is quite simple since you don't need physical buttons:
 To install the game, you just need to pull my repository, upload the file system (with the css, JS and HTML files), build main.cpp and upload the binary file.
 
 ## Interface
+
+*In Construction*

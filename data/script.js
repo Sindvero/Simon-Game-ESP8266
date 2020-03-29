@@ -27,18 +27,18 @@ function restartButton() {
     xhttp.open("GET", "restart", true);
     xhttp.send();
 }
-// setInterval(function getData()
-// {
-//     var xhttp = new XMLHttpRequest();
+setInterval(function getData()
+{
+    var xhttp = new XMLHttpRequest();
 
-//     xhttp.onreadystatechange = function()
-//     {
-//         if(this.readyState == 4 && this.status == 200)
-//         {
-//             document.getElementById("valeurLuminosite").innerHTML = this.responseText;
-//         }
-//     };
+    xhttp.onreadystatechange = function()
+    {
+        if(this.readyState == 4 && this.status == 200)
+        {
+            document.getElementById("score").innerHTML = this.responseText;
+        }
+    };
 
-//     xhttp.open("GET", "lireLuminosite", true);
-//     xhttp.send();
-// }, 2000);
+    xhttp.open("GET", "readScore", true);
+    xhttp.send();
+}, 2000);

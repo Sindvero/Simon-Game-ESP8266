@@ -6,13 +6,13 @@
 const char *ssid = "ssidNetwork";
 const char *password = "password";
 
-int randNumbers[100];
+uint8_t randNumbers[100];
 int count = 1;
 const int blueLed = 14;
 const int greenLed = 3;
 const int redLed = 12;
 const int whiteLed = 13;
-int highScore = 0;
+uint8_t highScore = 0;
 int soundPin = 0;
 int stateGreenLed = 0;
 int stateRedLed = 0;
@@ -21,7 +21,8 @@ int stateBlueLed = 0;
 unsigned long timeLeft = 1000;
 unsigned long timeGiven = 1000;
 int timeHigh = 500;
-int correct = 1;
+uint8_t correct = 1;
+uint8_t score = 0;
 int stateRestartButton = 0;
 int buttonPressed = -1;
 int stateBlueButton = 0;
@@ -32,7 +33,6 @@ int blueState = 0;
 int redState = 0;
 int whiteState = 0;
 int greenState = 0;
-char buffer[23];
 AsyncWebServer server(80);
 
 void setup() {
@@ -127,6 +127,12 @@ void setup() {
     request->send(204);
   });
 
+  server.on("/readScore", HTTP_GET, [](AsyncWebServerRequest *request)
+  {
+    String scoreString = String(score);
+    request->send(200, "text/plain", scoreString);
+  });
+
   server.begin();
   Serial.println("Server actif!");
 }
@@ -145,6 +151,7 @@ void loop() {
     if(stateRestartButton){
       count = 1;
       correct = 1;
+      score = 0;
       stateRestartButton = 0;
     }
 
@@ -201,6 +208,7 @@ void loop() {
       if (buttonPressed != randNumbers[t]){
         ledsHigh();
         correct = 0;
+        score = 0;
         buttonPressed = -1;
         break;
       }
@@ -210,6 +218,7 @@ void loop() {
     }
 
     count ++;
+    score ++;
     ledsLow();
     delay(100);
     

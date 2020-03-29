@@ -19,7 +19,8 @@ h1,h3{font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin:10px 0}
 .w3-ripple:active{opacity:0.5}.w3-ripple{transition:opacity 0s}
 .w3-circle{border-radius:50%}
 .w3-card{box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)}
-.w3-animate-opacity{animation:opac 0.8s}@keyframes opac{from{opacity:0} to{opacity:1}}.w3-xxxlarge{font-size:48px!important}.w3-center{text-align:center!important}
+.w3-animate-opacity{animation:opac 0.8s}@keyframes opac{from{opacity:0} to{opacity:1}}
+.w3-xlarge{font-size:24px!important}.w3-xxlarge{font-size:36px!important}.w3-xxxlarge{font-size:48px!important}.w3-center{text-align:center!important}
 .w3-margin{margin:16px!important}
 .w3-padding-small{padding:4px 8px!important}.w3-padding{padding:8px 16px!important}.w3-padding-24{padding-top:24px!important;padding-bottom:24px!important}
 .w3-button:hover{color:#000!important;background-color:#ccc!important}
