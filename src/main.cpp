@@ -133,6 +133,12 @@ void setup() {
     request->send(200, "text/plain", scoreString);
   });
 
+  server.on("/readHighScore", HTTP_GET, [](AsyncWebServerRequest *request)
+  {
+    String highScoreString = String(highScore);
+    request->send(200, "text/plain", highScoreString);
+  });
+
   server.begin();
   Serial.println("Server actif!");
 }
@@ -208,6 +214,9 @@ void loop() {
       if (buttonPressed != randNumbers[t]){
         ledsHigh();
         correct = 0;
+        if (highScore < score){
+          highScore = score;
+        }
         score = 0;
         buttonPressed = -1;
         break;
