@@ -14,8 +14,12 @@ The electronic schema is quite simple since you don't need physical buttons:
 
 ![electronicSchema](img/adafruit_project_webapp.png "Electonic Schema")
 
-To install the game, you just need to pull my repository, upload the file system (with the css, JS and HTML files), build main.cpp and upload the binary file.
+To install the game, you just need to pull my repository, upload the file system (with the css, JS and HTML files), change the two constants, ssid and password, to put yours, build main.cpp and upload the binary file.
 
 ## Interface
 
-*In Construction*
+After uploading the code on your ESP8266, you'll need to reach the server. To do so, open the Serial Monitor to get the IP address of the card. You should see this interface:
+
+![interface](img/interface.png "Web Interface")
+
+You can use either your smartphone or computer even though the interface is more "nice-looking" on a smartphone.

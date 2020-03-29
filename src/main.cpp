@@ -153,7 +153,7 @@ void loop() {
     ledsLow();
     // noTone(soundPin);
     delay(500);
-
+    score = 0;
     if(stateRestartButton){
       count = 1;
       correct = 1;
