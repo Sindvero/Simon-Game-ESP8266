@@ -21,7 +21,7 @@ int stateBlueLed = 0;
 unsigned long timeLeft = 1000;
 unsigned long timeGiven = 1000;
 int timeHigh = 500;
-uint8_t correct = 1;
+uint8_t correct = 0;
 uint8_t score = 0;
 int stateRestartButton = 0;
 int buttonPressed = -1;
@@ -50,6 +50,7 @@ void setup() {
   pinMode(blueLed, OUTPUT);
   pinMode(redLed, OUTPUT);
   pinMode(whiteLed, OUTPUT);
+  pinMode(soundPin, OUTPUT);
   ledsLow();
 
   //##################################
@@ -147,11 +148,11 @@ void loop() {
   if (!correct){
 
     ledsHigh();
-    // tone(soundPin, 140);
+    tone(soundPin, 140);
     delay(500);
 
     ledsLow();
-    // noTone(soundPin);
+    noTone(soundPin);
     delay(500);
     score = 0;
     if(stateRestartButton){
@@ -229,7 +230,15 @@ void loop() {
     count ++;
     score ++;
     ledsLow();
+    tone(soundPin, 900);
     delay(100);
+    noTone(soundPin);
+    delay(100);
+    tone(soundPin, 500);
+    delay(100);
+    noTone(soundPin);
+    delay(100);
+    tone(soundPin, 500);
     
 
   }
@@ -258,16 +267,21 @@ void ledHigh(int number){
   switch (number){
   case 1:
      digitalWrite(blueLed, HIGH);
+     tone(soundPin, 500);
     break;
   case 2:
      digitalWrite(greenLed, HIGH);
+     tone(soundPin, 400);
      break;
   case 3:
      digitalWrite(redLed, HIGH);
+     tone(soundPin, 300);
      break;
   case 4:
      digitalWrite(whiteLed, HIGH);
+     tone(soundPin, 600);
      break;
   }
   delay(50);
+  noTone(soundPin);
 }
