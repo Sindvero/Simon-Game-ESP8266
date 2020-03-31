@@ -17,8 +17,8 @@ The electronic schema is quite simple since you don't need physical buttons:
 
 You need to include these two libraries:
 
-https://github.com/me-no-dev/ESPAsyncWebServer
-https://github.com/me-no-dev/ESPAsyncTCP
+1. https://github.com/me-no-dev/ESPAsyncWebServer
+2. https://github.com/me-no-dev/ESPAsyncTCP
 
 To install the game, you just need to pull my repository, upload the file system (with the css, JS and HTML files) (platformio: 'upload file system image' for arduino IDE: please refer to https://randomnerdtutorials.com/esp32-web-server-spiffs-spi-flash-file-system/, 'Uploading Code and Files' section), change the two constants, ssid and password, to put yours, build main.cpp and upload the binary file.
 
