@@ -1,6 +1,6 @@
 # Modern Simon Game
 
-Simon is an electronic game of memory skills. The device creates a series of tones and lights and requires a user to repeat the sequence in a given time. This Simon game is a little bit different from the classic one: instead of having physical buttons you can push, you virtual buttons, *i.e.* you need to click, either with your computer or smartphone, on the web application's buttons.
+Simon is an electronic game of memory skills. The device creates a series of tones and lights and requires a user to repeat the sequence in a given time. This Simon game is a little bit different from the classic one: instead of having physical buttons you push virtual buttons, i.e. you need to click, either with your computer or smartphone, on the web application's buttons.
 
 ## Installation
 
